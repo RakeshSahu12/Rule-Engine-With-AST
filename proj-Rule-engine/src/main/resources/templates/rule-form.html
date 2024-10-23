@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Rule Engine Tester</title>
+</head>
+<body>
+    <h1>Rule Engine Tester</h1>
+
+    <!-- Create Rule -->
+    <form action="/api/rules/createRuleForm" method="POST">
+        <h3>Create Rule</h3>
+        <input type="text" name="ruleString" placeholder="Enter rule string (e.g., age > 30)" />
+        <button type="submit">Create Rule</button>
+    </form>
+
+    <!-- Combine Rules -->
+    <form action="/api/rules/combineRulesForm" method="POST">
+        <h3>Combine Rules</h3>
+        <input type="text" name="rule1" placeholder="Rule 1 (e.g., age > 30)" />
+        <input type="text" name="rule2" placeholder="Rule 2 (e.g., income < 50000)" />
+        <button type="submit">Combine Rules</button>
+    </form>
+
+    <!-- Evaluate Rule -->
+    <form action="/api/rules/evaluateRuleForm" method="POST">
+        <h3>Evaluate Rule</h3>
+        <input type="text" name="rule" placeholder="Rule (e.g., age > 30 AND income < 50000)" />
+        <input type="text" name="age" placeholder="Age" />
+        <input type="text" name="income" placeholder="Income" />
+        <button type="submit">Evaluate Rule</button>
+    </form>
+
+    <!-- Display Results -->
+    <div th:if="${result}">
+        <h3>Result: <span th:text="${result}"></span></h3>
+    </div>
+</body>
+</html>
